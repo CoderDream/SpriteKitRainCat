@@ -14,6 +14,8 @@
 		3F398DCD21D773A1006645A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F398DCC21D773A1006645A0 /* Assets.xcassets */; };
 		3F398DD021D773A1006645A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F398DCE21D773A1006645A0 /* LaunchScreen.storyboard */; };
 		3F398DD821D77462006645A0 /* BackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F398DD721D77461006645A0 /* BackgroundNode.swift */; };
+		3F398DDA21DD9618006645A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F398DD921DD9618006645A0 /* Constants.swift */; };
+		3F398DDC21DDA233006645A0 /* UmbrellaSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F398DDB21DDA233006645A0 /* UmbrellaSprite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		3F398DCF21D773A1006645A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F398DD121D773A2006645A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F398DD721D77461006645A0 /* BackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNode.swift; sourceTree = "<group>"; };
+		3F398DD921DD9618006645A0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3F398DDB21DDA233006645A0 /* UmbrellaSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaSprite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				3F398DCE21D773A1006645A0 /* LaunchScreen.storyboard */,
 				3F398DD121D773A2006645A0 /* Info.plist */,
 				3F398DD721D77461006645A0 /* BackgroundNode.swift */,
+				3F398DD921DD9618006645A0 /* Constants.swift */,
+				3F398DDB21DDA233006645A0 /* UmbrellaSprite.swift */,
 			);
 			path = RainCat;
 			sourceTree = "<group>";
@@ -141,6 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F398DDC21DDA233006645A0 /* UmbrellaSprite.swift in Sources */,
+				3F398DDA21DD9618006645A0 /* Constants.swift in Sources */,
 				3F398DC621D7739D006645A0 /* GameScene.swift in Sources */,
 				3F398DD821D77462006645A0 /* BackgroundNode.swift in Sources */,
 				3F398DC821D7739D006645A0 /* GameViewController.swift in Sources */,
