@@ -90,12 +90,12 @@
 		3F398DBE21D7739D006645A0 /* RainCat */ = {
 			isa = PBXGroup;
 			children = (
+				3F7608C921F70F550039836D /* ViewControllers */,
 				3F7608C821F70F1B0039836D /* Scenes */,
 				3F7608C721F70EDA0039836D /* Sprites */,
 				3F7608A821F56B4B0039836D /* Music */,
 				3F7608AD21F56B4B0039836D /* SFX */,
 				3F398DBF21D7739D006645A0 /* AppDelegate.swift */,
-				3F398DC721D7739D006645A0 /* GameViewController.swift */,
 				3F398DC921D7739D006645A0 /* Main.storyboard */,
 				3F398DCC21D773A1006645A0 /* Assets.xcassets */,
 				3F398DCE21D773A1006645A0 /* LaunchScreen.storyboard */,
@@ -148,6 +148,14 @@
 				3F398DC521D7739D006645A0 /* GameScene.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3F7608C921F70F550039836D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F398DC721D7739D006645A0 /* GameViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
