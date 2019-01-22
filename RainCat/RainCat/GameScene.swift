@@ -110,6 +110,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let raindrop = SKSpriteNode(texture: raindropTexture)
         // 设置雨滴的物理属性：材质和大小
         raindrop.physicsBody = SKPhysicsBody(texture: raindropTexture, size: raindrop.size)
+        // 设置密度
+        raindrop.physicsBody?.density = 0.5
         // 设置物理属性：可碰撞元素
         raindrop.physicsBody?.categoryBitMask = RainDropCategory
         raindrop.physicsBody?.contactTestBitMask = FloorCategory | WorldCategory
@@ -217,7 +219,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch otherBody.categoryBitMask {
         case RainDropCategory:
-            print("rain hit the cat")
+            //print("rain hit the cat")
+            catNode.hitByRain()
         case WorldCategory:
             spawnCat()
         default:
