@@ -28,6 +28,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var foodNode : FoodSprite!
     
     override func sceneDidLoad() {
+        let label = SKLabelNode(fontNamed: "Pixel Digivolve")
+        label.text = "Hello World!"
+        label.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        label.zPosition = 1000
+        addChild(label)
+        
         self.lastUpdateTime = 0
         
         // 将背景节点添加到场景中

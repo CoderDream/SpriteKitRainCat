@@ -30,6 +30,7 @@
 		3F7608C221F56BAE0039836D /* CatSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7608C121F56BAE0039836D /* CatSprite.swift */; };
 		3F7608C421F5739B0039836D /* FoodSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7608C321F5739B0039836D /* FoodSprite.swift */; };
 		3F7608C621F6F9EF0039836D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7608C521F6F9EF0039836D /* SoundManager.swift */; };
+		3F7608CC21F7171C0039836D /* Pixel Digivolve.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F7608CB21F7171C0039836D /* Pixel Digivolve.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		3F7608C121F56BAE0039836D /* CatSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSprite.swift; sourceTree = "<group>"; };
 		3F7608C321F5739B0039836D /* FoodSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSprite.swift; sourceTree = "<group>"; };
 		3F7608C521F6F9EF0039836D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		3F7608CB21F7171C0039836D /* Pixel Digivolve.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pixel Digivolve.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		3F398DBE21D7739D006645A0 /* RainCat */ = {
 			isa = PBXGroup;
 			children = (
+				3F7608CA21F717020039836D /* Fonts */,
 				3F7608C921F70F550039836D /* ViewControllers */,
 				3F7608C821F70F1B0039836D /* Scenes */,
 				3F7608C721F70EDA0039836D /* Sprites */,
@@ -156,6 +159,14 @@
 				3F398DC721D7739D006645A0 /* GameViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3F7608CA21F717020039836D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3F7608CB21F7171C0039836D /* Pixel Digivolve.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +237,7 @@
 				3F398DD021D773A1006645A0 /* LaunchScreen.storyboard in Resources */,
 				3F7608BB21F56B4B0039836D /* cat_meow_3.mp3 in Resources */,
 				3F7608BF21F56B4B0039836D /* cat_meow_7.mp3 in Resources */,
+				3F7608CC21F7171C0039836D /* Pixel Digivolve.otf in Resources */,
 				3F7608BC21F56B4B0039836D /* cat_meow_2.mp3 in Resources */,
 				3F7608BA21F56B4B0039836D /* cat_meow_6.wav in Resources */,
 				3F7608B821F56B4B0039836D /* bensound-jazzyfrenchy.mp3 in Resources */,
