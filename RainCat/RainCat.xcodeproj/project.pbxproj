@@ -90,19 +90,17 @@
 		3F398DBE21D7739D006645A0 /* RainCat */ = {
 			isa = PBXGroup;
 			children = (
-				3F7608C021F56B960039836D /* Sprites */,
+				3F7608C821F70F1B0039836D /* Scenes */,
+				3F7608C721F70EDA0039836D /* Sprites */,
 				3F7608A821F56B4B0039836D /* Music */,
 				3F7608AD21F56B4B0039836D /* SFX */,
 				3F398DBF21D7739D006645A0 /* AppDelegate.swift */,
-				3F398DC521D7739D006645A0 /* GameScene.swift */,
 				3F398DC721D7739D006645A0 /* GameViewController.swift */,
 				3F398DC921D7739D006645A0 /* Main.storyboard */,
 				3F398DCC21D773A1006645A0 /* Assets.xcassets */,
 				3F398DCE21D773A1006645A0 /* LaunchScreen.storyboard */,
 				3F398DD121D773A2006645A0 /* Info.plist */,
-				3F398DD721D77461006645A0 /* BackgroundNode.swift */,
 				3F398DD921DD9618006645A0 /* Constants.swift */,
-				3F398DDB21DDA233006645A0 /* UmbrellaSprite.swift */,
 				3F7608C521F6F9EF0039836D /* SoundManager.swift */,
 			);
 			path = RainCat;
@@ -133,13 +131,23 @@
 			path = SFX;
 			sourceTree = "<group>";
 		};
-		3F7608C021F56B960039836D /* Sprites */ = {
+		3F7608C721F70EDA0039836D /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
 				3F7608C121F56BAE0039836D /* CatSprite.swift */,
 				3F7608C321F5739B0039836D /* FoodSprite.swift */,
+				3F398DD721D77461006645A0 /* BackgroundNode.swift */,
+				3F398DDB21DDA233006645A0 /* UmbrellaSprite.swift */,
 			);
-			name = Sprites;
+			path = Sprites;
+			sourceTree = "<group>";
+		};
+		3F7608C821F70F1B0039836D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3F398DC521D7739D006645A0 /* GameScene.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
