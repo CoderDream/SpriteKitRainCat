@@ -219,9 +219,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch otherBody.categoryBitMask {
         case RainDropCategory:
-            //print("rain hit the cat")
+            print("### 1 ### rain hit the cat")
             catNode.hitByRain()
         case WorldCategory:
+            print("### 3 ### rain hit the cat")
             spawnCat()
         default:
             print("Something hit the cat")
@@ -268,7 +269,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             spawnFood()
         default:
-            print("Something else touched the food: \(dformatter.string(from: now))")
+            print("")
+            // print("Something else touched the food: \(dformatter.string(from: now))")
         }
     }
 }

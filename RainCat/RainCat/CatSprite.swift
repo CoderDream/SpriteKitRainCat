@@ -14,12 +14,27 @@ public class CatSprite : SKSpriteNode {
     private var timeSinceLastHit : TimeInterval = 2
     private let maxFlailTime : TimeInterval = 2
     
+    // 小猫被雨滴打中的次数
+    private var currentRainHits = 4
+    // 小猫喵喵叫前被雨滴击中的次数
+    private let maxRainHits = 4
+    
     private let walkingActionKey = "action_walking"
     
     // 动画帧
     private let walkFrames = [
         SKTexture(imageNamed: "cat_one"),
         SKTexture(imageNamed: "cat_two")
+    ]
+    
+    // 音效文件密码数组
+    private let meowSFX = [
+        "cat_meow_1.mp3",
+        "cat_meow_2.mp3",
+        "cat_meow_3.mp3",
+        "cat_meow_4.mp3",
+        "cat_meow_5.wav",
+        "cat_meow_6.wav",
     ]
     
     public static func newInstance() -> CatSprite {
@@ -71,7 +86,28 @@ public class CatSprite : SKSpriteNode {
     }
     
     public func hitByRain() {
+        // 让小猫发声
+        let selectedSFX = Int(arc4random_uniform(UInt32(meowSFX.count)))
+        run(SKAction.playSoundFileNamed(meowSFX[selectedSFX], waitForCompletion: true))
+        print("hitByRain")
         timeSinceLastHit = 0
         removeAction(forKey: walkingActionKey)
+        
+        
+        print("####### currentRainHits \(currentRainHits)")
+        // Determine if we should meow or not
+        if currentRainHits < maxRainHits {
+            currentRainHits += 1
+            print("####### currentRainHits \(currentRainHits)")
+            return
+        }
+        
+        if action(forKey: "action_sound_effect") == nil {
+            currentRainHits = 0
+            print("#######")
+            // 让小猫发声
+            let selectedSFX = Int(arc4random_uniform(UInt32(meowSFX.count)))
+            run(SKAction.playSoundFileNamed(meowSFX[selectedSFX], waitForCompletion: true))
+        }
     }
 }
