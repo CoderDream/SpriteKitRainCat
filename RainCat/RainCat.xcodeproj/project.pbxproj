@@ -16,6 +16,7 @@
 		3F398DD821D77462006645A0 /* BackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F398DD721D77461006645A0 /* BackgroundNode.swift */; };
 		3F398DDA21DD9618006645A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F398DD921DD9618006645A0 /* Constants.swift */; };
 		3F398DDC21DDA233006645A0 /* UmbrellaSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F398DDB21DDA233006645A0 /* UmbrellaSprite.swift */; };
+		3F3A5F6421F73AE900B340F4 /* HudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3A5F6321F73AE900B340F4 /* HudNode.swift */; };
 		3F7608B521F56B4B0039836D /* bensound-littleidea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F7608A921F56B4B0039836D /* bensound-littleidea.mp3 */; };
 		3F7608B621F56B4B0039836D /* bensound-clearday.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F7608AA21F56B4B0039836D /* bensound-clearday.mp3 */; };
 		3F7608B721F56B4B0039836D /* bensound-jazzcomedy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F7608AB21F56B4B0039836D /* bensound-jazzcomedy.mp3 */; };
@@ -45,6 +46,7 @@
 		3F398DD721D77461006645A0 /* BackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNode.swift; sourceTree = "<group>"; };
 		3F398DD921DD9618006645A0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3F398DDB21DDA233006645A0 /* UmbrellaSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaSprite.swift; sourceTree = "<group>"; };
+		3F3A5F6321F73AE900B340F4 /* HudNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudNode.swift; sourceTree = "<group>"; };
 		3F7608A921F56B4B0039836D /* bensound-littleidea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-littleidea.mp3"; sourceTree = "<group>"; };
 		3F7608AA21F56B4B0039836D /* bensound-clearday.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-clearday.mp3"; sourceTree = "<group>"; };
 		3F7608AB21F56B4B0039836D /* bensound-jazzcomedy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-jazzcomedy.mp3"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				3F7608C321F5739B0039836D /* FoodSprite.swift */,
 				3F398DD721D77461006645A0 /* BackgroundNode.swift */,
 				3F398DDB21DDA233006645A0 /* UmbrellaSprite.swift */,
+				3F3A5F6321F73AE900B340F4 /* HudNode.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				3F398DDC21DDA233006645A0 /* UmbrellaSprite.swift in Sources */,
 				3F7608C221F56BAE0039836D /* CatSprite.swift in Sources */,
 				3F7608C421F5739B0039836D /* FoodSprite.swift in Sources */,
+				3F3A5F6421F73AE900B340F4 /* HudNode.swift in Sources */,
 				3F398DDA21DD9618006645A0 /* Constants.swift in Sources */,
 				3F398DC621D7739D006645A0 /* GameScene.swift in Sources */,
 				3F398DD821D77462006645A0 /* BackgroundNode.swift in Sources */,

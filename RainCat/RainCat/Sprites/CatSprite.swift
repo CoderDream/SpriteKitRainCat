@@ -96,6 +96,9 @@ public class CatSprite : SKSpriteNode {
         timeSinceLastHit = 0
         removeAction(forKey: walkingActionKey)
         
+        // 让小猫发声
+        let selectedSFX = Int(arc4random_uniform(UInt32(meowSFX.count)))
+        run(SKAction.playSoundFileNamed(meowSFX[selectedSFX], waitForCompletion: true), withKey: "action_sound_effect")
         
         print("####### currentRainHits \(currentRainHits)")
         // Determine if we should meow or not

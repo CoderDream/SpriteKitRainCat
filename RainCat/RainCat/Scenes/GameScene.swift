@@ -27,12 +27,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // 食物精灵
     private var foodNode : FoodSprite!
     
+    private let hudNode = HudNode()
+    
     override func sceneDidLoad() {
-        let label = SKLabelNode(fontNamed: "Pixel Digivolve")
-        label.text = "Hello World!"
-        label.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        label.zPosition = 1000
-        addChild(label)
+        hudNode.setup(size: size)
+        addChild(hudNode)
         
         self.lastUpdateTime = 0
         
@@ -148,6 +147,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         catNode.position = CGPoint(x: umbrellaNode.position.x, y: umbrellaNode.position.y - 30)
         
         addChild(catNode)
+        
+        hudNode.resetPoints()
     }
     
     // 生成食物精灵
@@ -227,6 +228,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case RainDropCategory:
             print("### 1 ### rain hit the cat")
             catNode.hitByRain()
+            hudNode.resetPoints()
         case WorldCategory:
             print("### 3 ### rain hit the cat")
             spawnCat()
@@ -268,6 +270,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch otherBody.categoryBitMask {
         case CatCategory:
             print("fed cat: \(dformatter.string(from: now))")
+            hudNode.addPoint()
             fallthrough
         case WorldCategory:
             foodBody.node?.removeFromParent()
