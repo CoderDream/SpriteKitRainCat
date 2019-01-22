@@ -70,7 +70,12 @@ public class CatSprite : SKSpriteNode {
                 run(SKAction.rotate(toAngle: 0, duration: 0.25), withKey: "action_rotate")
             }
             
-            if foodLocation.x < position.x {
+            // Stand still if the food is above th cat.
+            if foodLocation.y > position.y && abs(foodLocation.x - position.x) < 2 {
+                physicsBody?.velocity.dx = 0
+                removeAction(forKey: walkingActionKey)
+                texture = walkFrames[1]
+            } else if foodLocation.x < position.x {
                 // Food is left
                 //position.x -= movementSpeed * CGFloat(deltaTime)
                 physicsBody?.velocity.dx = -movementSpeed
