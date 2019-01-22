@@ -25,6 +25,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var catNode : CatSprite!
     // 生成食物时的外边距
     private let foodEdgeMargin : CGFloat = 75.0
+    // 食物精灵
+    private var foodNode : FoodSprite!
+    
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
         
@@ -97,6 +100,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.lastUpdateTime = currentTime
         
         umbrellaNode.update(deltaTime: dt)
+        
+        catNode.update(deltaTime: dt, foodLocation: foodNode.position)
     }
     
     // 创建雨滴节点
@@ -141,14 +146,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // 我们新建了一个 FoodSprite，然后把它放在了屏幕上一个随机的位置 x。这里我们用了之前设定的外边距（margin）变量来限制了能够生成食物精灵的屏幕范围。
     // 首先，我们设置了随机位置的范围为屏幕的宽度减去 2 乘以外边距。然后，我们用外边距来偏移起始位置。这使得食物不会生成在任意距屏幕边界 0 到 75 的位置里。
     func spawnFood() {
-        let food = FoodSprite.newInstance()
+        // 这个函数将把食物变量的作用域从 spawnFood() 函数变为整个 GameScene.swift 文件。
+        // 在我们的代码中，同一时间我们只会生成一个 FoodSprite，同时我们需要保持对它的引用。
+        // 因为有这个引用，我们就可以检测到在任何时间食物的位置了。
+        // 同样的，在任何时间场景内也只会有一只猫，同样我们也需要保持对它的引用。
+        if let currentFood = foodNode, children.contains(currentFood) {
+            foodNode.removeFromParent()
+            foodNode.removeAllActions()
+            foodNode.physicsBody = nil
+        }
+        
+        foodNode = FoodSprite.newInstance()
         var randomPosition : CGFloat = CGFloat(arc4random())
         randomPosition = randomPosition.truncatingRemainder(dividingBy: size.width - foodEdgeMargin * 2)
         randomPosition += foodEdgeMargin
         
-        food.position = CGPoint(x: randomPosition, y: size.height)
+        foodNode.position = CGPoint(x: randomPosition, y: size.height)
         
-        addChild(food)
+        addChild(foodNode)
     }
     
     // 当有预先设置的 contactTestBitMasks 的物体碰撞发生时，这个方法就会被调用。
