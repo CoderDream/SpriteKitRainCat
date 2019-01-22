@@ -23,14 +23,14 @@ public class BackgroundNode : SKNode {
         // 更新背景节点
         // 天空
         let skyNode = SKShapeNode(rect: CGRect(origin: CGPoint(), size: size))
-        skyNode.fillColor = SKColor(displayP3Red: 0.38, green: 0.60, blue: 0.65, alpha: 1.0)
+        skyNode.fillColor = SKColor(red: 0.38, green: 0.60, blue: 0.65, alpha: 1.0)
         skyNode.strokeColor = SKColor.clear
         skyNode.zPosition = 0
         
         // 地面
         let groundSize = CGSize(width: size.width, height: size.height * 0.35)
         let groundNode = SKShapeNode(rect: CGRect(origin: CGPoint(), size: groundSize))
-        groundNode.fillColor = SKColor(displayP3Red: 0.99, green: 0.92, blue: 0.55, alpha: 1.0)
+        groundNode.fillColor = SKColor(red: 0.99, green: 0.92, blue: 0.55, alpha: 1.0)
         groundNode.strokeColor = SKColor.clear
         groundNode.zPosition = 1
         

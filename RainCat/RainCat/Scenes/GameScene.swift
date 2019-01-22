@@ -14,34 +14,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime : TimeInterval = 0
     private var currentRainDropSpawnTime : TimeInterval = 0
     private var rainDropSpawnRate : TimeInterval = 0.5
-    // 雨伞
-    private let umbrellaNode = UmbrellaSprite.newInstance()
-    
+    // 生成食物时的外边距
+    private let foodEdgeMargin : CGFloat = 75.0
     // 雨滴
     let raindropTexture = SKTexture(imageNamed: "rain_drop")
     // 背景节点
     private let backgroundNode = BackgroundNode()
+    // 雨伞
+    private let umbrellaNode = UmbrellaSprite.newInstance()
     // 小猫节点
     private var catNode : CatSprite!
-    // 生成食物时的外边距
-    private let foodEdgeMargin : CGFloat = 75.0
     // 食物精灵
     private var foodNode : FoodSprite!
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
-        
-        var worldFrame = frame
-        worldFrame.origin.x -= 100
-        worldFrame.origin.y -= 100
-        worldFrame.size.height += 200
-        worldFrame.size.width += 200
-        
-        self.physicsBody = SKPhysicsBody(edgeLoopFrom: worldFrame)
-        self.physicsBody?.categoryBitMask = WorldCategory
-        
-        // 监听场景的 physicsWorld 中所发生的碰撞
-        self.physicsWorld.contactDelegate = self
         
         // 将背景节点添加到场景中
         backgroundNode.setup(size: size)
@@ -57,6 +44,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spawnCat()
         // 生成食物精灵
         spawnFood()
+        
+        var worldFrame = frame
+        worldFrame.origin.x -= 100
+        worldFrame.origin.y -= 100
+        worldFrame.size.height += 200
+        worldFrame.size.width += 200
+        
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: worldFrame)
+        self.physicsBody?.categoryBitMask = WorldCategory
+        
+        // 监听场景的 physicsWorld 中所发生的碰撞
+        self.physicsWorld.contactDelegate = self
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -88,6 +88,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
         
+        umbrellaNode.update(deltaTime: dt)
+        
+        catNode.update(deltaTime: dt, foodLocation: foodNode.position)
+        
         // Update the Spawn Timer
         currentRainDropSpawnTime += dt
         
@@ -98,10 +102,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         self.lastUpdateTime = currentTime
-        
-        umbrellaNode.update(deltaTime: dt)
-        
-        catNode.update(deltaTime: dt, foodLocation: foodNode.position)
     }
     
     // 创建雨滴节点
@@ -110,11 +110,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let raindrop = SKSpriteNode(texture: raindropTexture)
         // 设置雨滴的物理属性：材质和大小
         raindrop.physicsBody = SKPhysicsBody(texture: raindropTexture, size: raindrop.size)
-        // 设置密度
-        raindrop.physicsBody?.density = 0.5
         // 设置物理属性：可碰撞元素
         raindrop.physicsBody?.categoryBitMask = RainDropCategory
         raindrop.physicsBody?.contactTestBitMask = FloorCategory | WorldCategory
+        // 设置密度
+        raindrop.physicsBody?.density = 0.5
         // 设置雨滴的位置：屏幕中心
         //raindrop.position = CGPoint(x: size.width / 2, y: size.height / 2)
         // 位置随机
@@ -182,13 +182,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // 我们在移除雨滴碰撞和移除离屏节点中间插入了一个条件判断。这个 if 语句判断了碰撞物体是不是猫，然后我们在 handleCatCollision(contact:) 函数中处理猫的行为。
         if contact.bodyA.categoryBitMask == FoodCategory || contact.bodyB.categoryBitMask == FoodCategory {
-            handleFoodCollision(contact: contact)
+            handleFoodHit(contact: contact)
             
             return
         }
         
         // 我们在移除雨滴碰撞和移除离屏节点中间插入了一个条件判断。这个 if 语句判断了碰撞物体是不是猫，然后我们在 handleCatCollision(contact:) 函数中处理猫的行为。
-        if contact.bodyA.categoryBitMask == WorldCategory || contact.bodyB.categoryBitMask == WorldCategory {
+        if contact.bodyA.categoryBitMask == CatCategory || contact.bodyB.categoryBitMask == CatCategory {
             handleCatCollision(contact: contact)
             
             return
@@ -235,7 +235,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // 最后，我们需要重新生成食物。总而言之，当食物触碰到了世界边界，我们只需要移除食物精灵和它的物理实体。
     // 如果食物触碰到了其它物理实体，那么 default 分支语句就会被触发然后在控制台打印一个通用语句。
     // 现在，唯一能触发这个语句的物理实体就是 RainDropCategory。
-    func handleFoodCollision(contact: SKPhysicsContact) {
+    func handleFoodHit(contact: SKPhysicsContact) {
         //获取当前时间
         let now = Date()
         

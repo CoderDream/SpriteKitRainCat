@@ -9,7 +9,8 @@
 import SpriteKit
 
 public class CatSprite : SKSpriteNode {
-    private let movementSpeed : CGFloat = 200
+    private let walkingActionKey = "action_walking"
+    private let movementSpeed : CGFloat = 100
     
     private var timeSinceLastHit : TimeInterval = 2
     private let maxFlailTime : TimeInterval = 2
@@ -19,7 +20,6 @@ public class CatSprite : SKSpriteNode {
     // 小猫喵喵叫前被雨滴击中的次数
     private let maxRainHits = 4
     
-    private let walkingActionKey = "action_walking"
     
     // 动画帧
     private let walkFrames = [
@@ -34,7 +34,7 @@ public class CatSprite : SKSpriteNode {
         "cat_meow_3.mp3",
         "cat_meow_4.mp3",
         "cat_meow_5.wav",
-        "cat_meow_6.wav",
+        "cat_meow_6.wav"
     ]
     
     public static func newInstance() -> CatSprite {
@@ -67,16 +67,18 @@ public class CatSprite : SKSpriteNode {
             
             // 修正小猫的旋转角度
             if zRotation != 0 && action(forKey: "action_rotate") == nil {
-                run(SKAction.rotate(byAngle: 0, duration: 0.25), withKey: "action_rotate")
+                run(SKAction.rotate(toAngle: 0, duration: 0.25), withKey: "action_rotate")
             }
             
             if foodLocation.x < position.x {
                 // Food is left
-                position.x -= movementSpeed * CGFloat(deltaTime)
+                //position.x -= movementSpeed * CGFloat(deltaTime)
+                physicsBody?.velocity.dx = -movementSpeed
                 xScale = -1
             } else {
                 // Food is right
-                position.x += movementSpeed * CGFloat(deltaTime)
+                //position.x += movementSpeed * CGFloat(deltaTime)
+                physicsBody?.velocity.dx = movementSpeed
                 xScale = 1
             }
             
@@ -86,9 +88,6 @@ public class CatSprite : SKSpriteNode {
     }
     
     public func hitByRain() {
-        // 让小猫发声
-        let selectedSFX = Int(arc4random_uniform(UInt32(meowSFX.count)))
-        run(SKAction.playSoundFileNamed(meowSFX[selectedSFX], waitForCompletion: true))
         print("hitByRain")
         timeSinceLastHit = 0
         removeAction(forKey: walkingActionKey)
@@ -107,7 +106,7 @@ public class CatSprite : SKSpriteNode {
             print("#######")
             // 让小猫发声
             let selectedSFX = Int(arc4random_uniform(UInt32(meowSFX.count)))
-            run(SKAction.playSoundFileNamed(meowSFX[selectedSFX], waitForCompletion: true))
+            run(SKAction.playSoundFileNamed(meowSFX[selectedSFX], waitForCompletion: true), withKey: "action_sound_effect")
         }
     }
 }
