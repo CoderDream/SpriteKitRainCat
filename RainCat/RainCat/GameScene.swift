@@ -210,6 +210,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    // 首先，我们定义了食物的物理实体，然后我们用了一个 switch 语句来判断除食物之外的物理实体。
+    // 接着，我们添加了一个 CatCategory 条件分支 - 这是个预留的接口，我们之后可以添加代码来更新游戏分数。
+    // 接下来我们 fallthrough 到 WorldFrameCategory 分支语句，这里我们需要从场景里移除食物精灵和它的物理实体。
+    // 最后，我们需要重新生成食物。总而言之，当食物触碰到了世界边界，我们只需要移除食物精灵和它的物理实体。
+    // 如果食物触碰到了其它物理实体，那么 default 分支语句就会被触发然后在控制台打印一个通用语句。
+    // 现在，唯一能触发这个语句的物理实体就是 RainDropCategory。
     func handleFoodCollision(contact: SKPhysicsContact) {
         //获取当前时间
         let now = Date()
@@ -226,7 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var otherBody : SKPhysicsBody
         var foodBody : SKPhysicsBody
         
-        if contact.bodyA.categoryBitMask == CatCategory {
+        if contact.bodyA.categoryBitMask == FoodCategory {
             otherBody = contact.bodyB
             foodBody = contact.bodyA
         } else {
