@@ -20,7 +20,6 @@ public class CatSprite : SKSpriteNode {
     // 小猫喵喵叫前被雨滴击中的次数
     private let maxRainHits = 4
     
-    
     // 动画帧
     private let walkFrames = [
         SKTexture(imageNamed: "cat_one"),
