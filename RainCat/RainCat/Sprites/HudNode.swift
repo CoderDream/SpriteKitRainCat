@@ -84,7 +84,8 @@ class HudNode: SKNode {
         scoreNode.text = "\(score)"
     }
     
-    func touchesBeganAtPoint(point : CGPoint) {
+    func touchBeganAtPoint(point : CGPoint) {
+        print("touchBeganAtPoint")
         let containsPoint = quitButton.contains(point)
         
         if quitButtonPressed && !containsPoint {
@@ -93,10 +94,12 @@ class HudNode: SKNode {
             quitButton.texture = quitButtonPressedTexture
         } else if containsPoint {
             quitButton.texture = quitButtonTexture
+            quitButtonPressed = true
         }
     }
     
-    func touchesMoveToPoint(point : CGPoint) {
+    func touchMoveToPoint(point : CGPoint) {
+        print("touchMoveToPoint")
         if quitButtonPressed {
             let containsPoint = quitButton.contains(point)
             if containsPoint {
@@ -107,9 +110,10 @@ class HudNode: SKNode {
         }
     }    
     
-    func touchesEndedAtPoint(point : CGPoint) {
+    func touchEndedAtPoint(point : CGPoint) {
+        print("touchEndedAtPoint")
         if quitButton.contains(point) {
-            // TODO tell the gamescene to quit the game
+            // tell the gamescene to quit the game
             quitButtonAction!()
         }
         

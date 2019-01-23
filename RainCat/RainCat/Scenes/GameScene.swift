@@ -81,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if let point = touchPoint {
             //umbrellaNode.setDestination(destination: point)
-            hudNode.touchesBeganAtPoint(point: point)
+            hudNode.touchBeganAtPoint(point: point)
             
             if !hudNode.quitButtonPressed {
                 umbrellaNode.setDestination(destination: point)
@@ -93,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touchPoint = touches.first?.location(in: self)
         
         if let point = touchPoint {
-            hudNode.touchesMoveToPoint(point: point)
+            hudNode.touchMoveToPoint(point: point)
             
             if !hudNode.quitButtonPressed {
                 umbrellaNode.setDestination(destination: point)
@@ -105,7 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touchPoint = touches.first?.location(in: self)
         
         if let point = touchPoint {
-            hudNode.touchesMoveToPoint(point: point)
+            hudNode.touchEndedAtPoint(point: point)
         }
     }
     
