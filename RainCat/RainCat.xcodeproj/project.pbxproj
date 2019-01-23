@@ -32,6 +32,7 @@
 		3F7608C421F5739B0039836D /* FoodSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7608C321F5739B0039836D /* FoodSprite.swift */; };
 		3F7608C621F6F9EF0039836D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7608C521F6F9EF0039836D /* SoundManager.swift */; };
 		3F7608CC21F7171C0039836D /* Pixel Digivolve.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F7608CB21F7171C0039836D /* Pixel Digivolve.otf */; };
+		3F9DAAD421F7F1B400552B8F /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DAAD321F7F1B400552B8F /* MenuScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		3F7608C321F5739B0039836D /* FoodSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSprite.swift; sourceTree = "<group>"; };
 		3F7608C521F6F9EF0039836D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		3F7608CB21F7171C0039836D /* Pixel Digivolve.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pixel Digivolve.otf"; sourceTree = "<group>"; };
+		3F9DAAD321F7F1B400552B8F /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				3F398DC521D7739D006645A0 /* GameScene.swift */,
+				3F9DAAD321F7F1B400552B8F /* MenuScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			files = (
 				3F398DDC21DDA233006645A0 /* UmbrellaSprite.swift in Sources */,
 				3F7608C221F56BAE0039836D /* CatSprite.swift in Sources */,
+				3F9DAAD421F7F1B400552B8F /* MenuScene.swift in Sources */,
 				3F7608C421F5739B0039836D /* FoodSprite.swift in Sources */,
 				3F3A5F6421F73AE900B340F4 /* HudNode.swift in Sources */,
 				3F398DDA21DD9618006645A0 /* Constants.swift in Sources */,
