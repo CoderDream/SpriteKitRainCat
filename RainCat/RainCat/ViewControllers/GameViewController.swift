@@ -22,9 +22,9 @@ class GameViewController: UIViewController {
             view.presentScene(sceneNode)
             view.ignoresSiblingOrder = true
             // 设置为物理实体，有物理属性
-            view.showsPhysics = true
-            view.showsFPS = true
-            view.showsNodeCount = true
+            //view.showsPhysics = true
+            //view.showsFPS = true
+            //view.showsNodeCount = true
             
             SoundManager.sharedInstance.startPlaying()
         }

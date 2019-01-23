@@ -9,11 +9,19 @@
 import SpriteKit
 
 class HudNode: SKNode {
+    var quitButtonAction : (() -> ())?
+    
+    private var quitButton : SKSpriteNode!
+    private let quitButtonTexture = SKTexture(imageNamed: "quit_button")
+    private let quitButtonPressedTexture = SKTexture(imageNamed: "quit_button_pressed")
+    
     private let scoreKey = "RAINCAT_HIGHSCORE"
     private let scoreNode = SKLabelNode(fontNamed: "Pixel Digivolve")
     private (set) var score : Int = 0
     private var highScore : Int = 0
     private var showingHighScore = false
+    private (set) var quitButtonPressed = false
+    
     
     /// Set up HUD here.
     public func setup(size:CGSize) {
@@ -25,6 +33,13 @@ class HudNode: SKNode {
         scoreNode.zPosition = 1
         
         addChild(scoreNode)
+        
+        // 退出按钮
+        quitButton = SKSpriteNode(texture: quitButtonTexture)
+        let margin : CGFloat = 15
+        quitButton.position = CGPoint(x: size.width - quitButton.size.width - margin, y: size.height - quitButton.size.height - margin)
+        quitButton.zPosition = 1000
+        addChild(quitButton)
     }
     
     /// Add point.
@@ -69,5 +84,35 @@ class HudNode: SKNode {
         scoreNode.text = "\(score)"
     }
     
+    func touchesBeganAtPoint(point : CGPoint) {
+        let containsPoint = quitButton.contains(point)
+        
+        if quitButtonPressed && !containsPoint {
+            // Cancel the last click
+            quitButtonPressed = false
+            quitButton.texture = quitButtonPressedTexture
+        } else if containsPoint {
+            quitButton.texture = quitButtonTexture
+        }
+    }
     
+    func touchesMoveToPoint(point : CGPoint) {
+        if quitButtonPressed {
+            let containsPoint = quitButton.contains(point)
+            if containsPoint {
+                quitButton.texture = quitButtonPressedTexture
+            } else if containsPoint {
+                quitButton.texture = quitButtonTexture
+            }
+        }
+    }    
+    
+    func touchesEndedAtPoint(point : CGPoint) {
+        if quitButton.contains(point) {
+            // TODO tell the gamescene to quit the game
+            quitButtonAction!()
+        }
+        
+        quitButton.texture = quitButtonTexture
+    }
 }

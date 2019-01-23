@@ -31,6 +31,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func sceneDidLoad() {
         hudNode.setup(size: size)
+        hudNode.quitButtonAction = {
+            let transition = SKTransition.reveal(with: .up, duration: 0.75)
+            let gameScene = MenuScene(size : self.size)
+            gameScene.scaleMode = self.scaleMode
+            
+            self.view?.presentScene(gameScene, transition: transition)
+            
+            self.hudNode.quitButtonAction = nil
+        }        
+        
         addChild(hudNode)
         
         self.lastUpdateTime = 0
@@ -70,7 +80,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touchPoint = touches.first?.location(in: self)
         
         if let point = touchPoint {
-            umbrellaNode.setDestination(destination: point)
+            //umbrellaNode.setDestination(destination: point)
+            hudNode.touchesBeganAtPoint(point: point)
+            
+            if !hudNode.quitButtonPressed {
+                umbrellaNode.setDestination(destination: point)
+            }
         }
     }
     
@@ -78,7 +93,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touchPoint = touches.first?.location(in: self)
         
         if let point = touchPoint {
-            umbrellaNode.setDestination(destination: point)
+            hudNode.touchesMoveToPoint(point: point)
+            
+            if !hudNode.quitButtonPressed {
+                umbrellaNode.setDestination(destination: point)
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touchPoint = touches.first?.location(in: self)
+        
+        if let point = touchPoint {
+            hudNode.touchesMoveToPoint(point: point)
         }
     }
     
