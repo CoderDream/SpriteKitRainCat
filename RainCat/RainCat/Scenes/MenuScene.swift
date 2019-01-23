@@ -37,7 +37,9 @@ class MenuScene : SKScene {
         let edgeMargin : CGFloat = 25
         
         // Set up sound button
-        soundButton = SKSpriteNode(texture: soundButtonTexture)
+        //soundButton = SKSpriteNode(texture: soundButtonTexture)
+        soundButton = SKSpriteNode(texture: SoundManager.sharedInstance.isMuted ? soundButtonTextureOff : soundButtonTexture)
+        
         soundButton.position = CGPoint(x: size.width - soundButton.size.width / 2 - edgeMargin, y: soundButton.size.height / 2 + edgeMargin)
         addChild(soundButton)
         
@@ -120,11 +122,21 @@ class MenuScene : SKScene {
     
     /// Stubbed out start button on click method
     func handleStartButtonClick() {
-        print("start clicked")
+        let transition = SKTransition.reveal(with: .down, duration: 0.75)
+        let gameScene = GameScene(size: size)
+        gameScene.scaleMode = scaleMode
+        view?.presentScene(gameScene, transition: transition)
     }
     
     /// Stubbed out sound button on click method
     func handleSoundButtonClick() {
-        print("sound clicked")
+        //print("sound clicked")
+        if SoundManager.sharedInstance.toggleMute() {
+            // Is muted
+            soundButton.texture = soundButtonTextureOff
+        } else {
+            // Is not muted
+            soundButton.texture = soundButtonTexture
+        }
     }
 }
